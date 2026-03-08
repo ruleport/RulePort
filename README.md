@@ -1,6 +1,8 @@
 # RulePort
 > **Write Once, Run Anywhere.** 
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/ruleport/RulePort)
+
 Manage your AI assistant rules in one place and sync them across all your tools.
 
 RulePort handles the translation and synchronization of context, coding standards, and project rules between different AI assistants. Instead of maintaining separate `.cursorrules`, `.github/copilot-instructions.md`, and `.claude/rules/` configs, you define them once and let this tool handle the rest.

@@ -1,9 +1,8 @@
 name: Publish to npm
 
 on:
-  push:
-    tags:
-      - 'v*'
+  release:
+    types: [published]
 
 # No NPM_TOKEN needed — npm issues a short-lived OIDC token instead.
 # id-token: write is the only permission required for trusted publishing.

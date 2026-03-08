@@ -160,7 +160,7 @@ export function syncCommand(config: CLIConfig): void {
 
             successCount++;
         } catch (error) {
-            log.indent(`✗ Error: ${error instanceof Error ? error.message : String(error)}`);
+            log.error(`❌ ${targetName}: ${error instanceof Error ? error.message : String(error)}`);
             errorCount++;
         }
     }
@@ -174,5 +174,9 @@ export function syncCommand(config: CLIConfig): void {
         }
     }
 
-    log.info(`\n📊 Sync complete: ${successCount} succeeded, ${errorCount} failed\n`);
+    if (errorCount > 0) {
+        log.warn(`\n📊 Sync complete: ${successCount} succeeded, ${errorCount} failed\n`);
+    } else {
+        log.info(`\n📊 Sync complete: ${successCount} succeeded, ${errorCount} failed\n`);
+    }
 }

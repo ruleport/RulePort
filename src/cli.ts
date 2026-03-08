@@ -1,12 +1,23 @@
 #!/usr/bin/env node
 
 import * as path from 'path';
+import * as fs from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import type { CLIConfig } from './config/types.js';
 import { getDefaultConfig, VALID_TARGETS, VALID_SOURCES } from './config/defaults.js';
 import { syncCommand } from './commands/sync.js';
 import { checkCommand } from './commands/check.js';
 import { watchCommand } from './commands/watch.js';
 import * as log from './core/log.js';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+function getVersion(): string {
+    const pkgPath = path.join(__dirname, '..', 'package.json');
+    const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8')) as { version: string };
+    return pkg.version;
+}
 
 /**
  * Parse command-line arguments into CLI configuration.
@@ -121,7 +132,7 @@ function parseArgs(args: string[]): CLIConfig {
  */
 function showHelp(): void {
     console.log(`
-RulePort - Unified AI assistant rules syncing utility
+RulePort v${getVersion()} - Unified AI assistant rules syncing utility
 
 Usage:
   ruleport [path] [options]
@@ -133,6 +144,7 @@ Commands:
   watch     Watch for changes and auto-sync
 
 Options:
+  --version, -v         Print version and exit
   --watch, -w           Watch for changes and auto-sync
   --source <name>       Source to read from (default: cursor)
                         Valid sources: cursor, claude, copilot, antigravity, kiro, windsurf
@@ -161,6 +173,12 @@ Legacy scripts:
  */
 function main(): void {
     const args = process.argv.slice(2);
+
+    // Handle version flag
+    if (args.includes('--version') || args.includes('-v')) {
+        console.log(getVersion());
+        process.exit(0);
+    }
 
     // Handle help flag
     if (args.includes('--help') || args.includes('-h')) {

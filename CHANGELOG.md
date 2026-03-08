@@ -1,3 +1,12 @@
+## [0.3.3](https://github.com/ruleport/RulePort/compare/v0.3.2...v0.3.3) (2026-03-08)
+
+
+### Bug Fixes
+
+* **actions:** update release workflow to include npm publishing and modify permissions ([f0a058e](https://github.com/ruleport/RulePort/commit/f0a058ebd2be619318367f43a560b03dd6be98e4))
+
+
+
 ## [0.3.2](https://github.com/ruleport/RulePort/compare/v0.3.1...v0.3.2) (2026-03-08)
 
 

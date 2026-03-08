@@ -1,3 +1,12 @@
+## [0.3.2](https://github.com/ruleport/RulePort/compare/v0.3.1...v0.3.2) (2026-03-08)
+
+
+### Bug Fixes
+
+* **actions:** update publish action to trigger on release published events ([#2](https://github.com/ruleport/RulePort/issues/2)) ([f8e5e8b](https://github.com/ruleport/RulePort/commit/f8e5e8b245c928d6abd39a0075070fc88d018c23))
+
+
+
 ## [0.3.1](https://github.com/ruleport/RulePort/compare/v0.3.0...v0.3.1) (2026-03-08)
 
 

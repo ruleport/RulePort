@@ -1,3 +1,12 @@
+## [0.3.4](https://github.com/ruleport/RulePort/compare/v0.3.3...v0.3.4) (2026-03-08)
+
+
+### Bug Fixes
+
+* **package:** add repository information to package.json ([55f734d](https://github.com/ruleport/RulePort/commit/55f734d3f714422cfecb528c4ccd3843d371e2dd))
+
+
+
 ## [0.3.3](https://github.com/ruleport/RulePort/compare/v0.3.2...v0.3.3) (2026-03-08)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **providers:** add support for Windsurf, Copilot, Kiro, Claude, Ant… ([#4](https://github.com/ruleport/RulePort/issues/4)) ([a5f8907](https://github.com/ruleport/RulePort/commit/a5f8907ffe0468d78fc4ca4c983930d7839a31d4))
-
-
-
-# [0.2.0](https://github.com/ruleport/RulePort/compare/bcbead897fe5150690483e4d9f0fcdfd6bd80c40...v0.2.0) (2026-01-22)
-
-
-### Features
-
-* Initialize rule translation project with core synchronization logic, tests, and documentation. ([bcbead8](https://github.com/ruleport/RulePort/commit/bcbead897fe5150690483e4d9f0fcdfd6bd80c40))
 
 
 

@@ -1,6 +1,6 @@
 {
   "name": "ruleport",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Unified AI assistant rules syncing utility for directory-based rules",
   "type": "module",
   "main": "dist/cli.js",

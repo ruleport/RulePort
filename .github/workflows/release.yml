@@ -12,6 +12,10 @@ jobs:
     name: Semantic Release
     runs-on: ubuntu-latest
     # Only run if CI passes (when on main) or for dry-run testing
+    outputs:
+      skipped: ${{ steps.changelog.outputs.skipped }}
+      dry_run: ${{ steps.check-branch.outputs.dry_run }}
+      tag: ${{ steps.changelog.outputs.tag }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -82,3 +86,40 @@ jobs:
         if: steps.changelog.outputs.skipped == 'true'
         run: |
           echo "⏭️ Release skipped - no conventional commits found (feat, fix, or BREAKING CHANGE)"
+
+  publish:
+    name: Publish to npm
+    needs: release
+    # Only publish on real releases (not dry runs, not skipped)
+    if: needs.release.outputs.skipped == 'false' && needs.release.outputs.dry_run == 'false'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.release.outputs.tag }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+
+      # Trusted publishing requires npm >= 11.5.1
+      - name: Upgrade npm
+        run: npm install -g npm@latest
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Run tests
+        run: npm test
+
+      - name: Publish to npm
+        run: npm publish --provenance --access public
